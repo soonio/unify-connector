@@ -9,18 +9,20 @@
     "hyperf/di": "^2.0",
     "unify/contract": "dev-master"
   },
-  "extra": {
-    "unify": {
-      "config": "unify\\connector\\ConfigProvider",
-      "aspect": "unify\\connector\\ConfigProvider"
-    }
-  },
   "license": "MIT",
   "autoload":{
     "psr-4":{
       "unify\\connector\\": "src"
     },
     "files": ["src/functions.php"]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "unify": {
+      "config": "unify\\connector\\ConfigProvider"
+    }
   },
   "authors": [
     {
