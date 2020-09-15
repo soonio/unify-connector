@@ -20,7 +20,7 @@
     "sort-packages": true
   },
   "extra": {
-    "unify": {
+    "hyperf": {
       "config": "unify\\connector\\ConfigProvider"
     }
   },
