@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Aspect;
 
-use Hyperf\Config\Config;
+use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Annotation\Aspect;
 use Hyperf\Di\Aop\AbstractAspect;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
@@ -34,7 +34,7 @@ class RpcClientRequestAspect extends AbstractAspect
     {
         // TODO 缺点：无法识别请求的是那个rpc服务，认证信息全局发送
         $container = ApplicationContext::getContainer();
-        $config = $container->get(Config::class)->get('unify');
+        $config = $container->get(ConfigInterface::class)->get('unify');
         $container->get(Context::class)->set(Access::NAME, Access::credentials($config['appid'], $config['appkey']));
         return $proceedingJoinPoint->process();
     }

@@ -4,7 +4,6 @@
   "type": "library",
   "require": {
     "php": ">7.2",
-    "hyperf/config": "^2.0",
     "hyperf/di": "^2.0",
     "hyperf/rpc": "^2.0",
     "hyperf/utils": "^2.0",
