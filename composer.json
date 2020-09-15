@@ -1,0 +1,25 @@
+{
+  "name": "unify/connector",
+  "description": "微中台服务中心连接器",
+  "type": "library",
+  "require": {
+    "php": ">7.2",
+    "hyperf/rpc": "^2.0",
+    "hyperf/utils": "^2.0",
+    "hyperf/di": "^2.0",
+    "unify/contract": "dev-master"
+  },
+  "license": "MIT",
+  "autoload":{
+    "psr-4":{
+      "unify\\connector\\": "src"
+    },
+    "files": ["src/functions.php"]
+  },
+  "authors": [
+    {
+      "name": "清流",
+      "email": "soonio@qq.com"
+    }
+  ]
+}
