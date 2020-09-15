@@ -22,6 +22,12 @@ class ConfigProvider
                     'description' => 'The config for unify service.',
                     'source' => __DIR__ . '/../publish/unify.php',
                     'destination' => BASE_PATH . '/config/autoload/unify.php',
+                ],
+                [
+                    'id' => 'aspect',
+                    'description' => 'The aspect for unify service.',
+                    'source' => __DIR__ . '/../publish/RpcClientRequestAspect.php',
+                    'destination' => BASE_PATH . '/app/Aspect/RpcClientRequestAspect.php',
                 ]
             ],
         ];
