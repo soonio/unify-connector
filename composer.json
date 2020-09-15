@@ -9,6 +9,12 @@
     "hyperf/di": "^2.0",
     "unify/contract": "dev-master"
   },
+  "extra": {
+    "unify": {
+      "config": "unify\\connector\\ConfigProvider",
+      "aspect": "unify\\connector\\ConfigProvider"
+    }
+  },
   "license": "MIT",
   "autoload":{
     "psr-4":{
