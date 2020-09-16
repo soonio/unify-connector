@@ -28,6 +28,12 @@ class ConfigProvider
                     'description' => 'The aspect for unify service.',
                     'source' => __DIR__ . '/../publish/RpcClientRequestAspect.php',
                     'destination' => BASE_PATH . '/app/Aspect/RpcClientRequestAspect.php',
+                ],
+                [
+                    'id' => 'RecvExceptionHandler',
+                    'description' => 'The exception handler for unify service.',
+                    'source' => __DIR__ . '/../publish/RecvExceptionHandler.php',
+                    'destination' => BASE_PATH . '/app/Exception/Handler/RecvExceptionHandler.php',
                 ]
             ],
         ];
