@@ -8,6 +8,7 @@
     "hyperf/exception-handler": "^2.0",
     "hyperf/http-message": "^2.0",
     "hyperf/rpc": "^2.0",
+    "hyperf/rpc-client": "^2.0",
     "hyperf/utils": "^2.0",
     "unify/contract": "dev-master"
   },

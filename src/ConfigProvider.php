@@ -34,6 +34,12 @@ class ConfigProvider
                     'description' => 'The exception handler for unify service.',
                     'source' => __DIR__ . '/../publish/RecvExceptionHandler.php',
                     'destination' => BASE_PATH . '/app/Exception/Handler/RecvExceptionHandler.php',
+                ],
+                [
+                    'id' => 'RequestExceptionHandler',
+                    'description' => 'The exception handler for unify service.',
+                    'source' => __DIR__ . '/../publish/RequestExceptionHandler.php',
+                    'destination' => BASE_PATH . '/app/Exception/Handler/RequestExceptionHandler.php',
                 ]
             ],
         ];

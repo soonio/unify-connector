@@ -14,18 +14,18 @@ namespace App\Exception\Handler;
 
 use Hyperf\ExceptionHandler\ExceptionHandler;
 use Hyperf\HttpMessage\Stream\SwooleStream;
-use Hyperf\Rpc\Exception\RecvException;
+use Hyperf\RpcClient\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 /**
- * Class RecvExceptionHandler
+ * Class RequestExceptionHandler
  * @package App\Exception\Handler
  */
-class RecvExceptionHandler extends ExceptionHandler
+class RequestExceptionHandler extends ExceptionHandler
 {
     /**
-     * @param Throwable|RecvException $throwable
+     * @param Throwable|RequestException $throwable
      * @param ResponseInterface $response
      * @return ResponseInterface
      */
@@ -36,7 +36,7 @@ class RecvExceptionHandler extends ExceptionHandler
         return $response
             ->withStatus(500)
             ->withAddedHeader('content-type', 'application/json; charset=utf-8')
-            ->withBody(new SwooleStream('Rpc服务异常，请稍后重试~'));
+            ->withBody(new SwooleStream( 'Rpc' .': ' . $throwable->getMessage()));
     }
 
     /**
@@ -45,6 +45,6 @@ class RecvExceptionHandler extends ExceptionHandler
      */
     public function isValid(Throwable $throwable): bool
     {
-        return $throwable instanceof RecvException;
+        return $throwable instanceof RequestException;
     }
 }

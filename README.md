@@ -24,6 +24,7 @@ php bin/hyperf.php vendor:publish unify/connector
             'http' => [
                 // ...其他异常handler
                 App\Exception\Handler\RecvExceptionHandler::class,
+                App\Exception\Handler\RequestExceptionHandler::class,
                 // ...其他异常handler
                 App\Exception\Handler\AppExceptionHandler::class,
             ],
