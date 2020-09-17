@@ -33,6 +33,9 @@ class RecvExceptionHandler extends ExceptionHandler
     {
         $this->stopPropagation();
 
+        // TODO $throwable 当前系统的异常信息
+        // TODO $throwable->getThrowable()， 中心系统抛出的错误信息
+
         return $response
             ->withStatus(500)
             ->withAddedHeader('content-type', 'application/json; charset=utf-8')
