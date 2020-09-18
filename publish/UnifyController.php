@@ -82,6 +82,11 @@ class UnifyController extends AbstractController
     }
 
     /**
+     * 获取用户信息
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class)
+     * })
+     * @RequestMapping(path="/unify/user", methods="get")
      * @return ResponseInterface
      * @throws InvalidArgumentException
      */
