@@ -66,7 +66,7 @@ class UnifyController extends AbstractController
         $permission = $this->userService->permission($uid);
         $cache->set('user:permission:' . $uid, $permission, $ttl);
 
-        return $this->success(compact('token', 'ttl', 'role', 'menu', 'permission'));
+        return $this->success(compact('token', 'ttl'));
     }
 
     /**
