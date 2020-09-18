@@ -60,6 +60,7 @@ class UnifyController extends CommonController
 
     /**
      * 退出登录
+     * @RequestMapping(path="/unify/logout", methods="get")
      * @return ResponseInterface
      * @throws InvalidArgumentException
      */
