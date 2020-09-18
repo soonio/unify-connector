@@ -63,6 +63,12 @@ class ConfigProvider
                 ],
                 [
                     'id' => 'config',
+                    'description' => 'rpc服务配置',
+                    'source' => __DIR__ . '/../publish/services.php',
+                    'destination' => BASE_PATH . '/config/autoload/services.php',
+                ],
+                [
+                    'id' => 'config',
                     'description' => '基本配置',
                     'source' => __DIR__ . '/../publish/unify.php',
                     'destination' => BASE_PATH . '/config/autoload/unify.php',
