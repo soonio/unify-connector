@@ -15,7 +15,7 @@ abstract class Getter
 
     public function __construct(array $attributes)
     {
-        $this->attributes;
+        $this->attributes = $attributes;
     }
 
     public function __get($name)
