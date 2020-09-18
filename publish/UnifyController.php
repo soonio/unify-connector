@@ -74,7 +74,7 @@ class UnifyController extends CommonController
     /**
      * @RequestMapping(path="/unify/menu", methods="get")
      * @return ResponseInterface
-     * @throws InvalidArgumentExceptionw
+     * @throws InvalidArgumentException
      */
     public function menu()
     {
