@@ -12,8 +12,10 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 use Psr\Http\Message\ResponseInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
+use unify\contract\AppServiceInterface;
 use unify\contract\UserServiceInterface;
 use App\Middleware\AuthMiddleware;
+use App\Middleware\PermissionMiddleware;
 
 /**
  * @Controller()
@@ -27,6 +29,12 @@ class UnifyController extends AbstractController
      * @var UserServiceInterface
      */
     protected $userService;
+
+    /**
+     * @Inject()
+     * @var AppServiceInterface
+     */
+    protected $appService;
 
     /**
      * 缓存用户的基本数据
@@ -58,7 +66,7 @@ class UnifyController extends AbstractController
         $permission = $this->userService->permission($uid);
         $cache->set('user:permission:' . $uid, $permission, $ttl);
 
-        return $this->success(compact('token', 'ttl'));
+        return $this->success(compact('token', 'ttl', 'role', 'menu', 'permission'));
     }
 
     /**
@@ -145,8 +153,20 @@ class UnifyController extends AbstractController
             ->get('user:permission:' . $this->getUser()->id);
         return $this->success($data);
     }
-    // 权限上报
 
-    // 路由上报
+    /**
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class),
+     *     @Middleware(PermissionMiddleware::class)
+     * })
+     * @RequestMapping(path="/unify/report/memu", methods="post")
+     * @return ResponseInterface
+     */
+    public function report()
+    {
+        $data = $this->request->post();
 
+        $this->appService->menu($data);
+        return $this->success();
+    }
 }
