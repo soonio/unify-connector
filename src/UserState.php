@@ -16,7 +16,7 @@ trait UserState
     /**
      * 获取用户(一般在控制器中获取)
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return Context::get('currentUser');
     }
