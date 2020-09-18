@@ -43,7 +43,7 @@ class UnifyController extends CommonController
 
         $ttl = 86400 * 7;
 
-        $cache->set('token:user:' . $token, $user, $ttl);
+        $cache->set('token:user:' . $token, $user, $ttl - 30);
 
         $role = $this->userService->role($uid);
         $cache->set('user:role:' . $uid, $role, $ttl);
