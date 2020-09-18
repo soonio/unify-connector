@@ -11,7 +11,7 @@ abstract class Getter
     /**
      * @var array 对象属性
      */
-    protected $attributes;
+    protected $attributes = [];
 
     public function __construct(array $attributes)
     {
@@ -25,5 +25,10 @@ abstract class Getter
         } else {
             throw PropertyDoesNotExist::fromName($name);
         }
+    }
+
+    public function toArray()
+    {
+        return $this->attributes;
     }
 }

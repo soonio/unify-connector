@@ -47,6 +47,7 @@ class UnifyController extends AbstractController
 
         $ttl = 86400 * 7;
 
+        $user['token'] = $token; // 把新token同时进行存储
         $cache->set('token:user:' . $token, $user, $ttl);
 
         $role = $this->userService->role($uid);
@@ -73,14 +74,23 @@ class UnifyController extends AbstractController
     public function logout()
     {
         $cache = $this->container->get(CacheInterface::class);
-        $token = Arr::first($this->request->getHeader('Authorization'));
-        $cache->delete('token:user:' . $token);
+        $cache->delete('token:user:' . $this->getUser()->token);
         $cache->delete('user:role:' . $this->getUser()->id);
         $cache->delete('user:menu:' . $this->getUser()->id);
         $cache->delete('user:permission:' . $this->getUser()->id);
         return $this->success();
     }
 
+    /**
+     * @return ResponseInterface
+     * @throws InvalidArgumentException
+     */
+    public function info()
+    {
+        $cache = $this->container->get(CacheInterface::class);
+        $user = (array)$cache->get('token:user:' . $this->getUser()->token);
+        return $this->success($user);
+    }
 
     /**
      * @Middlewares({

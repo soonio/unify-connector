@@ -7,11 +7,12 @@ namespace unify\connector;
 /**
  * Class User
  * @property-read int $id 用户ID
- * @property-read int $username 用户名
- * @property-read int $nickname 用户昵称
- * @property-read int $email 用户邮箱
+ * @property-read string $username 用户名
+ * @property-read string $nickname 用户昵称
+ * @property-read string $email 用户邮箱
  * @property-read int $status 用户状态
- * @property-read int $remark 用户签名/备注
+ * @property-read string $remark 用户签名/备注
+ * @property-read string $token 当前用户的通行签名
  * @package unify\connector
  */
 class User extends Getter {}
