@@ -1,6 +1,6 @@
 {
   "name": "unify/connector",
-  "description": "微中台服务中心连接器",
+  "description": "微中台服务中心-连接器",
   "type": "library",
   "require": {
     "php": ">7.2",

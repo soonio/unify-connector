@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\Middleware;
 use Hyperf\HttpServer\Annotation\Middlewares;
-use Hyperf\Utils\Arr;
 use unify\connector\UserState;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\Controller;
@@ -88,12 +87,11 @@ class UnifyController extends AbstractController
      * })
      * @RequestMapping(path="/unify/user", methods="get")
      * @return ResponseInterface
-     * @throws InvalidArgumentException
      */
     public function info()
     {
-        $cache = $this->container->get(CacheInterface::class);
-        $user = (array)$cache->get('token:user:' . $this->getUser()->token);
+        $user = $this->getUser()->toArray();
+        unset($user['token']);
         return $this->success($user);
     }
 
