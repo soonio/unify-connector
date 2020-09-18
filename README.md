@@ -9,6 +9,8 @@ php bin/hyperf.php vendor:publish unify/connector
 ## 配置
 
 - 配置文件
+  - 配置`unify.php`中的应用ID，密钥
+  - 配置`services.php`中的服务地址
 
 - 配置AOP
 
