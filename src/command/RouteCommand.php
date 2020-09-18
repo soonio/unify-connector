@@ -33,6 +33,14 @@ class RouteCommand extends HyperfCommand
         $this->config = $config;
     }
 
+    /**
+     * 接口路由的名称
+     * @var string[]
+     */
+    protected $routeName = [
+        'POST /unify/report/memu' => '上报系统菜单'
+    ];
+
     public function configure()
     {
         parent::configure();
@@ -66,7 +74,11 @@ class RouteCommand extends HyperfCommand
         // 遍历路由插入路由表，记录新的插入ID
         foreach ($data as $router) {
             foreach ($router['method'] as $method) {
-                $permissions[] = [ 'method' => $method, 'route' => $router['uri'], 'name' => '-' ];
+                $permissions[] = [
+                    'method'    => $method,
+                    'route'     => $router['uri'],
+                    'name'      => $this->routeName[$method . ' ' . $router['uri']] ?? '-'
+                ];
             }
         }
 
