@@ -6,3 +6,4 @@ composer.lock
 # 开发脚本
 deploy.sh
 usage.md
+t.php

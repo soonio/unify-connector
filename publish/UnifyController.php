@@ -54,7 +54,7 @@ class UnifyController extends CommonController
         $permission = $this->userService->permission($uid);
         $cache->set('user:permission:' . $uid, $permission, $ttl);
 
-        return $this->success(compact($token, $ttl));
+        return $this->success(compact('token', 'ttl'));
     }
 
     /**
