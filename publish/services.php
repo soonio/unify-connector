@@ -30,7 +30,7 @@ return [
             'protocol'=> 'jsonrpc',
             // 需要根据实际情况配置采用consul方式或者直接配置nodes配置服务
             'nodes' => [
-                 ['host' => '127.0.0.1', 'port' => 9502]
+                 ['host' => '127.0.0.1', 'port' => 9502],
             ],
             'options' => [
                 'connect_timeout'   => 5.0,
