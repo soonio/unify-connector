@@ -18,16 +18,16 @@ class ConfigProvider
             ],
             'publish' => [
                 [
+                    'id' => 'AbstractController',
+                    'description' => '通用控制器.',
+                    'source' => __DIR__ . '/../publish/AbstractController.php',
+                    'destination' => BASE_PATH . '/app/Controller/AbstractController.php',
+                ],
+                [
                     'id' => 'AuthMiddleware',
                     'description' => '认证中间件.',
                     'source' => __DIR__ . '/../publish/AuthMiddleware.php',
                     'destination' => BASE_PATH . '/app/Middleware/AuthMiddleware.php',
-                ],
-                [
-                    'id' => 'CommonController',
-                    'description' => '通用控制器.',
-                    'source' => __DIR__ . '/../publish/CommonController.php',
-                    'destination' => BASE_PATH . '/app/Controller/CommonController.php',
                 ],
                 [
                     'id' => 'ErrorCode',

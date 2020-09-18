@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\HttpServer\Annotation\Middleware;
+use Hyperf\HttpServer\Annotation\Middlewares;
 use Hyperf\Utils\Arr;
 use unify\connector\UserState;
 use Hyperf\Di\Annotation\Inject;
@@ -12,11 +14,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use unify\contract\UserServiceInterface;
+use App\Middleware\AuthMiddleware;
 
 /**
  * @Controller()
  */
-class UnifyController extends CommonController
+class UnifyController extends AbstractController
 {
     use UserState;
 
@@ -44,7 +47,7 @@ class UnifyController extends CommonController
 
         $ttl = 86400 * 7;
 
-        $cache->set('token:user:' . $token, $user, $ttl - 30);
+        $cache->set('token:user:' . $token, $user, $ttl);
 
         $role = $this->userService->role($uid);
         $cache->set('user:role:' . $uid, $role, $ttl);
@@ -60,6 +63,9 @@ class UnifyController extends CommonController
 
     /**
      * 退出登录
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class)
+     * })
      * @RequestMapping(path="/unify/logout", methods="get")
      * @return ResponseInterface
      * @throws InvalidArgumentException
@@ -75,7 +81,11 @@ class UnifyController extends CommonController
         return $this->success();
     }
 
+
     /**
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class)
+     * })
      * @RequestMapping(path="/unify/role", methods="get")
      * @return mixed
      * @throws InvalidArgumentException
@@ -90,6 +100,9 @@ class UnifyController extends CommonController
     }
 
     /**
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class)
+     * })
      * @RequestMapping(path="/unify/menu", methods="get")
      * @return ResponseInterface
      * @throws InvalidArgumentException
@@ -104,6 +117,9 @@ class UnifyController extends CommonController
     }
 
     /**
+     * @Middlewares({
+     *     @Middleware(AuthMiddleware::class)
+     * })
      * @RequestMapping(path="/unify/permission", methods="get")
      * @return ResponseInterface
      * @throws InvalidArgumentException
