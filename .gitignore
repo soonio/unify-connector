@@ -3,4 +3,6 @@
 composer.lock
 /vendor/
 
+# 开发脚本
 deploy.sh
+usage.md
