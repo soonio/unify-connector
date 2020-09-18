@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\Utils\Arr;
 use unify\connector\UserState;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\Controller;
@@ -55,6 +56,22 @@ class UnifyController extends CommonController
         $cache->set('user:permission:' . $uid, $permission, $ttl);
 
         return $this->success(compact('token', 'ttl'));
+    }
+
+    /**
+     * 退出登录
+     * @return ResponseInterface
+     * @throws InvalidArgumentException
+     */
+    public function logout()
+    {
+        $cache = $this->container->get(CacheInterface::class);
+        $token = Arr::first($this->request->getHeader('Authorization'));
+        $cache->delete('token:user:' . $token);
+        $cache->delete('user:role:' . $this->getUser()->id);
+        $cache->delete('user:menu:' . $this->getUser()->id);
+        $cache->delete('user:permission:' . $this->getUser()->id);
+        return $this->success();
     }
 
     /**
