@@ -11,13 +11,15 @@ declare(strict_types=1);
  */
 
 
+use unify\contract\AppServiceInterface;
 use unify\contract\TestServiceInterface;
 use unify\contract\UserServiceInterface;
 
 
 $services = [
     ['TestService', TestServiceInterface::class],
-    ['UserService', UserServiceInterface::class]
+    ['UserService', UserServiceInterface::class],
+    ['AppService', AppServiceInterface::class],
 ];
 
 
