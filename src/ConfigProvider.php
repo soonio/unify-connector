@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace unify\connector;
 
+use unify\connector\command\RouteCommand;
+
 class ConfigProvider
 {
     public function __invoke(): array
     {
         return [
+            'commands' => [
+                RouteCommand::class
+            ],
             'annotations' => [
                 'scan' => [
                     'paths' => [
