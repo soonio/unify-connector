@@ -9,14 +9,12 @@ use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface as HttpResponse;
 use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\Utils\ApplicationContext;
-use Hyperf\Utils\Arr;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
-use unify\connector\User;
 use unify\connector\UserState;
 use unify\contract\PermissionUniqueSlug;
 
@@ -25,7 +23,7 @@ use unify\contract\PermissionUniqueSlug;
  * 认证权限中间件
  * @package App\Middleware
  */
-class AuthMiddleware implements MiddlewareInterface
+class PermissionMiddleware implements MiddlewareInterface
 {
     use PermissionUniqueSlug;
     use UserState;
@@ -48,14 +46,12 @@ class AuthMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $token = Arr::first($request->getHeader('Authorization'));
+        $dispatcher = $request->getAttribute(Dispatched::class);
+        $slug = $this->slug($request->getMethod(), strtolower($dispatcher->handler->route));
 
         $cache = ApplicationContext::getContainer()->get(CacheInterface::class);
-        $user = $cache->get('token:user:' . $token);
-
-        if ($user) {
-            $user = new User($user);
-            $this->setUser($user);
+        $permission = $cache->get('user:permission:' . $this->getUser()->id);
+        if ($permission && in_array($slug, $permission)) {
             return $handler->handle($request);
         }
 
@@ -63,6 +59,6 @@ class AuthMiddleware implements MiddlewareInterface
             ->response
             ->withStatus(200)
             ->withAddedHeader('content-type', 'application/json; charset=utf-8')
-            ->withBody(new SwooleStream(message(ErrorCode::AUTH_FAILURE)));
+            ->withBody(new SwooleStream(message(ErrorCode::PERMISSION_REFUSE)));
     }
 }

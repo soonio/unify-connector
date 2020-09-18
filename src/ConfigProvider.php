@@ -41,7 +41,12 @@ class ConfigProvider
                     'source' => __DIR__ . '/../publish/Model.php',
                     'destination' => BASE_PATH . '/app/Model/Model.php',
                 ],
-
+                [
+                    'id' => 'PermissionMiddleware',
+                    'description' => '认证中间件.',
+                    'source' => __DIR__ . '/../publish/PermissionMiddleware.php',
+                    'destination' => BASE_PATH . '/app/Middleware/PermissionMiddleware.php',
+                ],
                 [
                     'id' => 'RecvExceptionHandler',
                     'description' => '消息接收异常处理情',
