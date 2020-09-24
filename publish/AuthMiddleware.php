@@ -7,7 +7,6 @@ namespace App\Middleware;
 use App\Constants\ErrorCode;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface as HttpResponse;
-use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Utils\Arr;
 use Psr\Http\Message\ResponseInterface;
@@ -18,7 +17,6 @@ use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use unify\connector\User;
 use unify\connector\UserState;
-use unify\contract\PermissionUniqueSlug;
 
 /**
  * Class PermissionMiddleware
@@ -27,7 +25,6 @@ use unify\contract\PermissionUniqueSlug;
  */
 class AuthMiddleware implements MiddlewareInterface
 {
-    use PermissionUniqueSlug;
     use UserState;
 
     /**

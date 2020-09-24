@@ -17,7 +17,7 @@ if (!function_exists('message')) {
      * @param bool $json
      * @return array|string
      */
-    function message(int $code, array $data=null, string $msg=null, bool $json=true)
+    function message(int $code, ?array $data=null, string $msg=null, bool $json=true)
     {
         $info = ['code' => $code, 'msg' => $msg ?? ErrorCode::getMessage($code)];
         is_null($data) || $info['data'] = $data;
