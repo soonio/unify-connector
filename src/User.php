@@ -13,6 +13,8 @@ namespace unify\connector;
  * @property-read int $status 用户状态
  * @property-read string $remark 用户签名/备注
  * @property-read string $token 当前用户的通行签名
+ * @property-read bool isOwner 是否为应用Owner
+ * @property-read bool isSuperAdmin 是否为超级管理器
  * @package unify\connector
  */
 class User extends Getter {}
