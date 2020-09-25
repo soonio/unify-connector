@@ -15,6 +15,7 @@ namespace unify\connector;
  * @property-read string $token 当前用户的通行签名
  * @property-read bool isOwner 是否为应用Owner
  * @property-read bool isSuperAdmin 是否为超级管理器
+ * @property-read string avatar 头像地址
  * @package unify\connector
  */
 class User extends Getter {}
