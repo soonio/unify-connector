@@ -46,6 +46,10 @@ class PermissionMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // 超级管理员或者应用管理员不验证权限
+        if ($this->getUser()->isSuperAdmin || $this->getUser()->isOwner) {
+            return $handler->handle($request);
+        }
         $dispatcher = $request->getAttribute(Dispatched::class);
         $slug = $this->slug($request->getMethod(), strtolower($dispatcher->handler->route));
 
