@@ -29,10 +29,10 @@ class ConfigProvider
                     'destination' => BASE_PATH . '/app/Controller/AbstractController.php',
                 ],
                 [
-                    'id' => 'AuthMiddleware',
+                    'id' => 'AuthorizeMiddleware',
                     'description' => '认证中间件.',
-                    'source' => __DIR__ . '/../publish/AuthMiddleware.php',
-                    'destination' => BASE_PATH . '/app/Middleware/AuthMiddleware.php',
+                    'source' => __DIR__ . '/../publish/AuthorizeMiddleware.php',
+                    'destination' => BASE_PATH . '/app/Middleware/AuthorizeMiddleware.php',
                 ],
                 [
                     'id' => 'ErrorCode',

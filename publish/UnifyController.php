@@ -14,7 +14,7 @@ use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use unify\contract\AppServiceInterface;
 use unify\contract\UserServiceInterface;
-use App\Middleware\AuthMiddleware;
+use App\Middleware\AuthorizeMiddleware;
 use App\Middleware\PermissionMiddleware;
 
 /**
@@ -72,7 +72,7 @@ class UnifyController extends AbstractController
     /**
      * 退出登录
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class)
+     *     @Middleware(AuthorizeMiddleware::class)
      * })
      * @RequestMapping(path="/unify/logout", methods="get")
      * @return ResponseInterface
@@ -91,7 +91,7 @@ class UnifyController extends AbstractController
     /**
      * 获取用户信息
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class)
+     *     @Middleware(AuthorizeMiddleware::class)
      * })
      * @RequestMapping(path="/unify/user", methods="get")
      * @return ResponseInterface
@@ -105,7 +105,7 @@ class UnifyController extends AbstractController
 
     /**
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class)
+     *     @Middleware(AuthorizeMiddleware::class)
      * })
      * @RequestMapping(path="/unify/role", methods="get")
      * @return mixed
@@ -122,7 +122,7 @@ class UnifyController extends AbstractController
 
     /**
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class)
+     *     @Middleware(AuthorizeMiddleware::class)
      * })
      * @RequestMapping(path="/unify/menu", methods="get")
      * @return ResponseInterface
@@ -139,7 +139,7 @@ class UnifyController extends AbstractController
 
     /**
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class)
+     *     @Middleware(AuthorizeMiddleware::class)
      * })
      * @RequestMapping(path="/unify/permission", methods="get")
      * @return ResponseInterface
@@ -156,7 +156,7 @@ class UnifyController extends AbstractController
 
     /**
      * @Middlewares({
-     *     @Middleware(AuthMiddleware::class),
+     *     @Middleware(AuthorizeMiddleware::class),
      *     @Middleware(PermissionMiddleware::class)
      * })
      * @RequestMapping(path="/unify/report/memu", methods="post")

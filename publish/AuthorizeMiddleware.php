@@ -23,7 +23,7 @@ use unify\connector\UserState;
  * 认证权限中间件
  * @package App\Middleware
  */
-class AuthMiddleware implements MiddlewareInterface
+class AuthorizeMiddleware implements MiddlewareInterface
 {
     use UserState;
 
