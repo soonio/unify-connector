@@ -4,6 +4,7 @@
   "type": "library",
   "require": {
     "php": ">7.2",
+    "ext-json": "*",
     "hyperf/command": "^2.0",
     "hyperf/constants": "^2.0",
     "hyperf/contract": "^2.0",

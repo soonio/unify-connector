@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace unify\connector;
 
 use unify\connector\command\RouteCommand;
+use unify\connector\command\RpcTestCommand;
 
 class ConfigProvider
 {
@@ -12,7 +13,8 @@ class ConfigProvider
     {
         return [
             'commands' => [
-                RouteCommand::class
+                RouteCommand::class,
+                RpcTestCommand::class
             ],
             'annotations' => [
                 'scan' => [
