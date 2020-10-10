@@ -23,9 +23,9 @@ php bin/hyperf.php vendor:publish unify/connector
 
   .env
   ```dotenv
-  UNIFY_RPC_APP_ID=10003
-  UNIFY_RPC_APP_KEY=73ce3e2f15ff247e0f362e4417a73143
-  UNIFY_RPC_NODES=139.224.118.146:9518
+  UNIFY_RPC_APP_ID=888
+  UNIFY_RPC_APP_KEY=73ce3e2f15ff247e0f362e4417a202012
+  UNIFY_RPC_NODES=127.0.0.1:9518
   ```
 
 - 配置AOP
