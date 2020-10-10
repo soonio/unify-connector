@@ -21,6 +21,13 @@ php bin/hyperf.php vendor:publish unify/connector
   - 配置`unify.php`中的应用ID，密钥
   - 配置`services.php`中的服务地址
 
+  .env
+  ```dotenv
+  UNIFY_RPC_APP_ID=10003
+  UNIFY_RPC_APP_KEY=73ce3e2f15ff247e0f362e4417a73143
+  UNIFY_RPC_NODES=139.224.118.146:9518
+  ```
+
 - 配置AOP
 
     > 无需特殊配置
