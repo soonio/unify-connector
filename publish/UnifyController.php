@@ -13,6 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use unify\contract\AppServiceInterface;
+use unify\contract\UnifyServiceInterface;
 use unify\contract\UserServiceInterface;
 use App\Middleware\AuthorizeMiddleware;
 use App\Middleware\PermissionMiddleware;
@@ -35,6 +36,12 @@ class UnifyController extends AbstractController
      * @var AppServiceInterface
      */
     protected $appService;
+
+    /**
+     * @Inject()
+     * @var UnifyServiceInterface
+     */
+    protected $unifyService;
 
     /**
      * 缓存用户的基本数据
@@ -168,5 +175,16 @@ class UnifyController extends AbstractController
 
         $this->appService->menu($data);
         return $this->success();
+    }
+
+    /**
+     * @RequestMapping(path="/unify/front/url", methods="get")
+     * @return ResponseInterface
+     */
+    public function front()
+    {
+        return $this->success([
+            'url' => $this->unifyService->front()
+        ]);
     }
 }
