@@ -52,3 +52,24 @@ php bin/hyperf.php vendor:publish hyperf/filesystem
     ];
 
     ```
+
+## 路由管理
+
+- 输出路由到控制台(不上报)
+```bash
+php bin/hyperf.php route:report -o true
+```
+
+- 输出路由到文件(不上报)
+```bash
+php bin/hyperf.php route:report -f true
+
+# 需要文件驱动
+composer require hyperf/filesystem
+php bin/hyperf.php vendor:publish hyperf/filesystem
+```
+
+- 路由上报
+```bash
+php bin/hyperf.php route:report
+```
