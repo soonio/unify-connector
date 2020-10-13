@@ -4,6 +4,9 @@
 
 ```bash
 php bin/hyperf.php vendor:publish unify/connector
+
+该扩展依赖文件系统，需要同时发布文件系统配置
+php bin/hyperf.php vendor:publish hyperf/filesystem
 ```
 
 > 对于发布失败的文件，可以通过手动修改  
