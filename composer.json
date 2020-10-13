@@ -10,7 +10,6 @@
     "hyperf/contract": "^2.0",
     "hyperf/di": "^2.0",
     "hyperf/exception-handler": "^2.0",
-    "hyperf/filesystem": "^2.0",
     "hyperf/http-message": "^2.0",
     "hyperf/http-server": "^2.0",
     "hyperf/json-rpc": "^2.0",
