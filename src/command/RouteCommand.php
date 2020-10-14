@@ -57,7 +57,7 @@ class RouteCommand extends HyperfCommand
 
         $this->addOption('out', 'o', InputArgument::OPTIONAL, '仅仅输出到控制台', false);
         $this->addOption('file', 'f', InputArgument::OPTIONAL, '输出路由配置到文件');
-        $this->addOption('filedrive', 'fd', InputArgument::OPTIONAL, '文件驱动', 'local');
+        $this->addOption('filedrive', 'd', InputArgument::OPTIONAL, '文件驱动', 'local');
     }
 
     public function handle()
