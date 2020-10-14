@@ -57,6 +57,7 @@ class RouteCommand extends HyperfCommand
 
         $this->addOption('out', 'o', InputArgument::OPTIONAL, '仅仅输出到控制台', false);
         $this->addOption('file', 'f', InputArgument::OPTIONAL, '输出路由配置到文件');
+        $this->addOption('filedrive', 'fd', InputArgument::OPTIONAL, '文件驱动', 'local');
     }
 
     public function handle()
@@ -131,7 +132,7 @@ class RouteCommand extends HyperfCommand
                         $this->filesystem()->delete($this->filename);
                         break;
                     case 1:
-                        $path = str_replace('.json', '-' . time() . '.json', $path);break;
+                        $this->filename = str_replace('.json', '-' . time() . '.json', $this->filename);break;
                     default:
                         $this->error('操作异常.');
                 }
@@ -198,9 +199,10 @@ class RouteCommand extends HyperfCommand
     protected function filesystem(bool $slient=false)
     {
         if (class_exists('Hyperf\Filesystem\FilesystemFactory')) {
+            $fd = $this->input->getOption('filedrive');
             return ApplicationContext::getContainer()
                 ->get('Hyperf\Filesystem\FilesystemFactory')
-                ->get('local');
+                ->get($fd);
         } else {
             $slient || $this->warn('缺少文件驱动, 请安装 hyperf/filesystem!');
             return null;
